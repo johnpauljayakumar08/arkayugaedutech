@@ -74,15 +74,7 @@ const Home = () => {
                 />
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-primary/20 to-transparent pointer-events-none"></div>
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl flex items-center space-x-4 border border-gray-100">
-                <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white">
-                  <Users size={24} />
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-primary">5000+</p>
-                  <p className="text-gray-500 text-sm">Students Trained</p>
-                </div>
-              </div>
+              
             </motion.div>
           </div>
         </div>
@@ -203,7 +195,7 @@ const Home = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link to="/contact">
-                <Button className="bg-white text-primary hover:bg-gray-100 border-none shadow-2xl">Start Now</Button>
+                <Button className="bg-primary text-primary hover:bg-gray-100 border-none shadow-2xl">Start Now</Button>
               </Link>
             </div>
           </motion.div>

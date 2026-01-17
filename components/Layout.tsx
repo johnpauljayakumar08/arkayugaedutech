@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail, MapPin, Linkedin, Facebook, Twitter, Instagram } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logo from '../assest/ARKAYUGA EDUTECH.png';
 
 const NAV_LINKS = [
   { name: 'Home', path: '/' },
@@ -22,7 +23,7 @@ const Header = () => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [])
 
   useEffect(() => {
     setIsOpen(false);
@@ -30,16 +31,11 @@ const Header = () => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`}>
-      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
+      <div className="container mx-auto  md:px-10 flex items-center justify-between">
         <Link to="/" className="flex items-center space-x-2">
-          <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-            <span className="text-secondary font-bold text-2xl">A</span>
-          </div>
-          <span className={`text-xl font-bold tracking-tight ${scrolled ? 'text-primary' : 'text-primary'}`}>
-            Arkayuga <span className="text-secondary">EduTech</span>
-          </span>
+          <img src={logo} alt="Arkayuga EduTech" className="w-30 h-20 rounded-lg object-cover" />
+          
         </Link>
-
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center space-x-8">
           {NAV_LINKS.map((link) => (
@@ -106,9 +102,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-secondary font-bold text-2xl">A</span>
-              </div>
+              <img src={logo} alt="Arkayuga EduTech" className="w-10 h-10 rounded-lg object-cover" />
               <span className="text-white text-xl font-bold tracking-tight">
                 Arkayuga <span className="text-secondary">EduTech</span>
               </span>
