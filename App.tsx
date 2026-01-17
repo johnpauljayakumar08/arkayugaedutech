@@ -5,6 +5,7 @@ import { Layout } from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
 import Courses from './pages/Courses';
+import CourseDetails from './pages/CourseDetails';
 import LearningModels from './pages/LearningModels';
 import WhyChooseUs from './pages/WhyChooseUs';
 import Contact from './pages/Contact';
@@ -26,6 +27,7 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/course/:id" element={<CourseDetails />} />
           <Route path="/learning-models" element={<LearningModels />} />
           <Route path="/why-us" element={<WhyChooseUs />} />
           <Route path="/contact" element={<Contact />} />

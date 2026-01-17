@@ -1,4 +1,11 @@
 
+export interface Module {
+  title: string;
+  description: string;
+  image: string;
+  topics: string[];
+}
+
 export interface Course {
   id: string;
   title: string;
@@ -6,6 +13,7 @@ export interface Course {
   tools: string[];
   icon: string;
   focus: string;
+  curriculum?: Module[];
 }
 
 export interface SEOData {

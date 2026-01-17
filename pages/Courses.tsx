@@ -2,12 +2,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Search } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { SectionHeading, Button } from '../components/UI';
 import { SEO } from '../components/SEO';
 import { SEO_CONFIG, COURSES, getIcon } from '../constants';
 import { Course } from '../types';
 
-// Map course categories to relevant Unsplash IT images
 const getCourseImage = (id: string) => {
   const images: Record<string, string> = {
     'mern-stack': 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=800',
@@ -23,7 +23,6 @@ const getCourseImage = (id: string) => {
   return images[id] || `https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800`;
 };
 
-// Properly typed CourseCard using React.FC to handle the reserved 'key' prop in list mapping
 const CourseCard: React.FC<{ course: Course; index: number }> = ({ course, index }) => {
   return (
     <motion.div
@@ -61,7 +60,9 @@ const CourseCard: React.FC<{ course: Course; index: number }> = ({ course, index
               </span>
             ))}
           </div>
-          <Button variant="outline" className="w-full">Course Details</Button>
+          <Link to={`/course/${course.id}`}>
+            <Button variant="outline" className="w-full mt-4">Course Details</Button>
+          </Link>
         </div>
       </div>
     </motion.div>
