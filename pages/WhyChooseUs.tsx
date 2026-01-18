@@ -41,7 +41,7 @@ const WhyChooseUs = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-16 bg-white border-b">
+      {/* <section className="py-16 bg-white border-b">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
@@ -57,7 +57,7 @@ const WhyChooseUs = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Key Benefits */}
       <section className="py-24 bg-accent">

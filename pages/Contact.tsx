@@ -37,8 +37,8 @@ const Contact = () => {
 
               <div className="space-y-8">
                 {[
-                  { icon: <MapPin />, title: 'Location', value: '123, Tech Plaza, Gandhipuram, Coimbatore, India' },
-                  { icon: <Phone />, title: 'Call Us', value: '+91 98765 43210' },
+                  { icon: <MapPin />, title: 'Location', value: 'Door no.29 ashok layout, civil aerodrome post, sitra, Coimbatore 641014' },
+                  { icon: <Phone />, title: 'Call Us', value: '+91 6380442393' },
                   { icon: <Mail />, title: 'Email Us', value: 'info@arkayuga.com' }
                 ].map((item, i) => (
                   <div key={i} className="flex items-start space-x-6">

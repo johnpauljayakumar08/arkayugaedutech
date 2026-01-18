@@ -102,7 +102,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center space-x-2">
-              <img src={logo} alt="Arkayuga EduTech" className="w-10 h-10 rounded-lg object-cover" />
+              {/* <img src={logo} alt="Arkayuga EduTech" className="w-10 h-10 rounded-lg object-cover" /> */}
               <span className="text-white text-xl font-bold tracking-tight">
                 Arkayuga <span className="text-secondary">EduTech</span>
               </span>
@@ -148,11 +148,11 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
                 <MapPin className="text-secondary mt-1 shrink-0" size={18} />
-                <span className="text-sm">Coimbatore, Tamil Nadu, India</span>
+                <span className="text-sm"> Door no.29 ashok layout, civil aerodrome post, sitra, Coimbatore 641014</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="text-secondary shrink-0" size={18} />
-                <span className="text-sm">+91 98765 43210</span>
+                <span className="text-sm">+91 6380442393</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="text-secondary shrink-0" size={18} />
