@@ -121,24 +121,25 @@ const Home = () => {
           <SectionHeading title="Industry-Ready Programs" subtitle="Equip yourself with the most in-demand skills in the tech world today." />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {COURSES.slice(0, 6).map((course, i) => (
-              <motion.div
-                key={course.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 group"
-              >
-                <div className="w-14 h-14 bg-primary/5 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all">
-                  {getIcon(course.icon)}
-                </div>
-                <h3 className="text-xl font-bold text-primary mb-3">{course.title}</h3>
-                <p className="text-gray-600 mb-6 line-clamp-2">{course.description}</p>
-                <Link to="/courses" className="flex items-center text-secondary font-bold hover:translate-x-2 transition-transform">
-                  Learn More <ArrowRight className="ml-2" size={18} />
-                </Link>
-              </motion.div>
+              <Link key={course.id} to={`/courses`}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  whileHover={{ y: -10 }}
+                  className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 group cursor-pointer h-full"
+                >
+                  <div className="w-14 h-14 bg-primary/5 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                    {getIcon(course.icon)}
+                  </div>
+                  <h3 className="text-xl font-bold text-primary mb-3">{course.title}</h3>
+                  <p className="text-gray-600 mb-6 line-clamp-2">{course.description}</p>
+                  <div className="flex items-center text-secondary font-bold group-hover:translate-x-2 transition-transform">
+                    Learn More <ArrowRight className="ml-2" size={18} />
+                  </div>
+                </motion.div>
+              </Link>
             ))}
           </div>
           <div className="text-center mt-12">

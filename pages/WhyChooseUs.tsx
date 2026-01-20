@@ -97,7 +97,7 @@ const WhyChooseUs = () => {
                 className="rounded-3xl shadow-2xl"
                 title="Professional Growth and Collaborative IT Education"
               />
-              <div className="absolute top-1/2 -right-8 -translate-y-1/2 hidden lg:block space-y-4">
+              <div className="absolute top-1/2 -right-8 -translate-y-1/2 hidden space-y-4">
                 {[1,2,3].map(i => (
                   <div key={i} className="bg-white p-4 rounded-xl shadow-lg border border-gray-100 flex items-center space-x-3 w-64 animate-bounce" style={{ animationDelay: `${i * 0.5}s` }}>
                     <CheckCircle className="text-secondary" />

@@ -12,8 +12,43 @@ const Contact = () => {
     email: '',
     phone: '',
     course: '',
+    collegeName: '',
+    passoutYear: '',
+    state: '',
+    city: '',
     message: ''
   });
+
+  const years = Array.from({ length: 21 }, (_, i) => 2010 + i);
+  
+  const states = [
+    'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat', 
+    'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 
+    'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 
+    'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal'
+  ];
+
+  const cities: { [key: string]: string[] } = {
+    'Tamil Nadu': ['Chennai', 'Coimbatore', 'Madurai', 'Salem', 'Tiruppur', 'Thanjavur', 'Erode', 'Kanyakumari', 'Vellore', 'Nellore', 'Thoothukudi', 'Villupuram', 'Kanchipuram', 'Chengalpattu', 'Ariyalur', 'Perambalur', 'Ranipet'],
+    'Karnataka': ['Bangalore', 'Mysore', 'Mangalore', 'Belgaum', 'Hubli', 'Davangere', 'Shimoga', 'Udupi', 'Chitradurga', 'Kolar', 'Tumkur', 'Bijapur', 'Hassan', 'Uttara Kannada', 'Dakshina Kannada'],
+    'Maharashtra': ['Mumbai', 'Pune', 'Nagpur', 'Aurangabad', 'Nashik', 'Kolhapur', 'Solapur', 'Sangli', 'Satara', 'Latur', 'Nanded', 'Parbhani', 'Jalgaon', 'Dhule', 'Washim', 'Yavatmal', 'Akola', 'Amravati', 'Wardha'],
+    'Telangana': ['Hyderabad', 'Secunderabad', 'Warangal', 'Nizamabad', 'Khammam', 'Karimnagar', 'Mahbubnagar', 'Medak', 'Adilabad', 'Nalgonda', 'Ranga Reddy', 'Vikarabad'],
+    'Andhra Pradesh': ['Visakhapatnam', 'Vijayawada', 'Guntur', 'Tirupati', 'Nellore', 'Rajahmundry', 'Kakinada', 'Vijayanagaram', 'Srikakulam', 'Tenali', 'Ongole', 'Chittoor', 'Anantapur', 'Kadapa'],
+    'Gujarat': ['Ahmedabad', 'Surat', 'Vadodara', 'Rajkot', 'Gandhinagar', 'Bhavnagar', 'Jamnagar', 'Junagadh', 'Anand', 'Visnagar', 'Nadiad', 'Godhra', 'Patan', 'Palanpur', 'Mehsana', 'Morbi'],
+    'Rajasthan': ['Jaipur', 'Jodhpur', 'Udaipur', 'Kota', 'Bikaner', 'Ajmer', 'Alwar', 'Bhilwara', 'Chittorgarh', 'Dungarpur', 'Hanumangarh', 'Jaisalmer', 'Nagaur', 'Pali', 'Sikar', 'Tonk'],
+    'Uttar Pradesh': ['Lucknow', 'Kanpur', 'Ghaziabad', 'Noida', 'Agra', 'Varanasi', 'Meerut', 'Allahabad', 'Bareilly', 'Mathura', 'Saharanpur', 'Aligarh', 'Moradabad', 'Azamgarh', 'Firozabad', 'Jhansi', 'Etawah'],
+    'West Bengal': ['Kolkata', 'Asansol', 'Siliguri', 'Durgapur', 'Darjeeling', 'Hooghly', 'Howrah', 'Murshidabad', 'Nadia', 'North 24 Parganas', 'South 24 Parganas', 'East Midnapore'],
+    'Punjab': ['Chandigarh', 'Amritsar', 'Ludhiana', 'Jalandhar', 'Patiala', 'Bathinda', 'Mohali', 'Pathankot', 'Hoshiarpur', 'Sangrur', 'Moga', 'Firozpur', 'Faridkot'],
+    'Haryana': ['Gurgaon', 'Faridabad', 'Hisar', 'Rohtak', 'Panipat', 'Ambala', 'Karnal', 'Sonipat', 'Yamunanagar', 'Jind', 'Kaithal', 'Palwal', 'Bhiwani', 'Charkhi Dadri'],
+    'Delhi': ['New Delhi', 'Delhi', 'East Delhi', 'West Delhi', 'North Delhi', 'South Delhi', 'Central Delhi', 'North West Delhi', 'South West Delhi', 'North East Delhi', 'South East Delhi'],
+    'Kerala': ['Thiruvananthapuram', 'Kochi', 'Kozhikode', 'Kannur', 'Kottayam', 'Alappuzha', 'Idukki', 'Pathanamthitta', 'Ernakulam', 'Thrissur', 'Malappuram'],
+    'Himachal Pradesh': ['Shimla', 'Mandi', 'Solan', 'Kangra', 'Una', 'Chamba', 'Kullu', 'Kinnaur', 'Lahaul and Spiti', 'Bilaspur', 'Hamirpur'],
+    'Uttarakhand': ['Dehradun', 'Haridwar', 'Udham Singh Nagar', 'Nainital', 'Almora', 'Bageshwar', 'Champawat', 'Pithoragarh', 'Rudraprayag', 'Garhwal', 'Chamoli'],
+    'Jharkhand': ['Ranchi', 'Dhanbad', 'Giridih', 'East Singhbhum', 'West Singhbhum', 'Bokaro', 'Hazaribagh', 'Koderma', 'Palamu', 'Lohardaga', 'Sahibganj', 'Pashchim Singhbhum'],
+    'Odisha': ['Bhubaneswar', 'Cuttack', 'Rourkela', 'Bhadrak', 'Balasore', 'Sambalpur', 'Jharsuguda', 'Bargarh', 'Bolangir', 'Nuapada', 'Kalahandi', 'Rayagada'],
+    'Bihar': ['Patna', 'Gaya', 'Bhagalpur', 'Muzaffarpur', 'Nalanda', 'East Champaran', 'West Champaran', 'Sitamarhi', 'Darbhanga', 'Madhubani', 'Saharsa', 'Khagaria'],
+    'Assam': ['Guwahati', 'Silchar', 'Dibrugarh', 'Nagaon', 'Tinsukia', 'Barpeta', 'Golaghat', 'Sibsagar', 'Kamrup', 'Sonitpur', 'Cachar']
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -105,6 +140,32 @@ const Contact = () => {
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
+                        <label className="text-sm font-bold text-primary ml-1">College Name</label>
+                        <input 
+                          required
+                          type="text" 
+                          className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-secondary focus:ring-0 outline-none transition-all"
+                          placeholder="Your College Name"
+                          onChange={(e) => setFormData({...formData, collegeName: e.target.value})}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-bold text-primary ml-1">Passout Year</label>
+                        <select 
+                          required
+                          className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-secondary focus:ring-0 outline-none transition-all appearance-none"
+                          onChange={(e) => setFormData({...formData, passoutYear: e.target.value})}
+                        >
+                          <option value="">Select Year</option>
+                          {years.map(year => (
+                            <option key={year} value={year}>{year}</option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
                         <label className="text-sm font-bold text-primary ml-1">Phone Number</label>
                         <input 
                           required
@@ -117,14 +178,45 @@ const Contact = () => {
                       <div className="space-y-2">
                         <label className="text-sm font-bold text-primary ml-1">Course Interested In</label>
                         <select 
+                          required
                           className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-secondary focus:ring-0 outline-none transition-all appearance-none"
                           onChange={(e) => setFormData({...formData, course: e.target.value})}
                         >
+                          <option value="">Select Course</option>
                           <option>MERN Stack</option>
                           <option>Java Full Stack</option>
                           <option>UI/UX Design</option>
                           <option>AWS Cloud</option>
                           <option>Data Analytics</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-sm font-bold text-primary ml-1">State</label>
+                        <select 
+                          required
+                          className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-secondary focus:ring-0 outline-none transition-all appearance-none"
+                          onChange={(e) => setFormData({...formData, state: e.target.value})}
+                        >
+                          <option value="">Select State</option>
+                          {states.map(state => (
+                            <option key={state} value={state}>{state}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-bold text-primary ml-1">City</label>
+                        <select 
+                          required
+                          className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-secondary focus:ring-0 outline-none transition-all appearance-none"
+                          onChange={(e) => setFormData({...formData, city: e.target.value})}
+                        >
+                          <option value="">Select City</option>
+                          {formData.state && cities[formData.state] && cities[formData.state].map(city => (
+                            <option key={city} value={city}>{city}</option>
+                          ))}
                         </select>
                       </div>
                     </div>
